@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Basic SSE Example</title>
+    <script src="jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+<pre id="x">初始化...</pre>&lt;!&ndash;之所以用pre，没用div或p，是为了确保（包括换行的数据能够以它被接收时的格式呈现，而不会被修改或格式化。）&ndash;&gt;
+<script>
+//    var es = new EventSource("/initController/sseRequest");//创建EventSource对象，将要连接的URL作为它唯一的参数。这里是连接到basic_sse.php
+//    es.addEventListener("message", function(e){
+//        document.getElementById("x").innerHTML += "\n" + e.data;//运态修改页面内容。
+//    },false);
+
+    var es = new EventSource("/initController/sseSendMailSteam");//创建EventSource对象，将要连接的URL作为它唯一的参数。这里是连接到basic_sse.php
+    es.addEventListener("message", function(e){
+        document.getElementById("x").innerHTML += "\n" + e.data;//运态修改页面内容。
+    },false);
+//    var source= new EventSource("/initController/sseRequest");
+//    source.onmessage = function(event){
+//        $('#x')[0].innerHTML += "\n" + event.data;
+//    };
+</script>
+
+
+</body>
+</html>
